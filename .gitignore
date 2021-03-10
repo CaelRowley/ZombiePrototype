@@ -72,3 +72,41 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Compiled source files for the engine to use
+Intermediate/*
+Plugins/*/Intermediate/*
+
+# Cache files for the editor to use
+DerivedDataCache/*
+
+Engine/Binaries/
+Engine/DerivedDataCache/
+Engine/Intermediate/
+Engine/Plugins/*/*/Binaries/
+Engine/Plugins/*/*/Intermediate/
+Engine/Programs/UnrealHeaderTool/
+Engine/Programs/UnrealPak/
+Engine/Saved/
+Engine/Shaders/Binaries/
+Engine/Source/*/*/*/obj/
+Engine/Source/*/*/obj/
+Engine/Source/*/obj/
+
+UE4.opensdf
+UE4.sdf
+UE4.sln
+UE4.suo
+UE4.*.suo
+
+ZombiePrototype/Binaries/
+ZombiePrototype/DerivedDataCache/
+ZombiePrototype/Intermediate/
+ZombiePrototype/Saved/
+ZombiePrototype/Build/
+
+ZombiePrototype/Content/MS_ForestTut/
+ZombiePrototype/Content/Poplar_ForestTut/
+ZombiePrototype/Content/StarterContent/
+ZombiePrototype/Content/WesternTown/
+ZombiePrototype/Content/Zombie_Man/
