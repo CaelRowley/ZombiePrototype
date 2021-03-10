@@ -105,8 +105,8 @@ ZombiePrototype/Intermediate/
 ZombiePrototype/Saved/
 ZombiePrototype/Build/
 
-ZombiePrototype/Content/MS_ForestTut/
-ZombiePrototype/Content/Poplar_ForestTut/
-ZombiePrototype/Content/StarterContent/
-ZombiePrototype/Content/WesternTown/
-ZombiePrototype/Content/Zombie_Man/
+ZombiePrototype/Content/MS_ForestTut/*
+ZombiePrototype/Content/Poplar_ForestTut/*
+ZombiePrototype/Content/StarterContent/*
+ZombiePrototype/Content/WesternTown/*
+ZombiePrototype/Content/Zombie_Man/*
