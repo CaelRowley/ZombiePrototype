@@ -24,6 +24,11 @@ public:
 	inline void SetMotionSource(FName MotionSource) { MotionController->SetTrackingMotionSource(MotionSource); }
 	virtual void PairControllers(AControllerBase* ControllerBase) { }
 
+	virtual void LeftThumbstickX(float throttle) { }
+	virtual void LeftThumbstickY() { }
+	virtual void RightThumbstickX() { }
+	virtual void RightThumbstickY() { }
+
 	virtual void LeftGrip() { }
 	virtual void LeftRelease() { }
 	virtual void RightGrip() { }

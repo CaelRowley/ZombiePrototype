@@ -35,26 +35,19 @@ private:
 	class UCameraComponent* Camera;
 	UPROPERTY(VisibleAnywhere)
 	class USceneComponent* VRRoot;
-	UPROPERTY(VisibleAnywhere)
-	class USplineComponent* TeleportPath;
-	UPROPERTY(VisibleAnywhere)
-	class UStaticMeshComponent* DestinationMarker;
-
-	UPROPERTY()
-	class UPostProcessComponent* PostProcessComponent;
-	UPROPERTY()
-	AControllerBase* LeftController;
-	UPROPERTY()
-	AControllerBase* RightController;
-	UPROPERTY()
-	class UMaterialInstanceDynamic* BlinkerMaterialInstance;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AControllerBase> ControllerBase;
-	UPROPERTY(EditAnywhere)
-	class UMaterialInterface* BlinkerMaterialBase;
+
+	UPROPERTY(VisibleAnywhere)
+	AControllerBase* LeftController;
+	UPROPERTY(VisibleAnywhere)
+	AControllerBase* RightController;
 
 	void MoveForward(float throttle);
 	void MoveRight(float throttle);
+
+	inline void LeftTriggerPressed() { LeftController->LeftTriggerPressed(); }
+	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle); }
 
 };

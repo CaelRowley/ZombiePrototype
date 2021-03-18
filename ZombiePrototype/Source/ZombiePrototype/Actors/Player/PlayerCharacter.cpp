@@ -5,7 +5,6 @@
 
 #include "Components/SplineComponent.h"
 #include "Camera/CameraComponent.h"
-#include "Components/PostProcessComponent.h"
 #include "Components/CapsuleComponent.h"
 
 // Sets default values
@@ -19,38 +18,6 @@ APlayerCharacter::APlayerCharacter()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(VRRoot);
-
-	TeleportPath = CreateDefaultSubobject<USplineComponent>(TEXT("TeleportPath"));
-	TeleportPath->SetupAttachment(VRRoot);
-
-	//DestinationMarker = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DestinationMarker"));
-	//DestinationMarker->SetupAttachment(GetRootComponent());
-
-	//PostProcessComponent = CreateDefaultSubobject<UPostProcessComponent>(TEXT("PostProcessComponent"));
-	//PostProcessComponent->SetupAttachment(GetRootComponent());
-
-	//DestinationMarker->SetVisibility(false);
-
-	//BlinkerMaterialInstance = UMaterialInstanceDynamic::Create(BlinkerMaterialBase, this);
-	//PostProcessComponent->AddOrUpdateBlendable(BlinkerMaterialInstance);
-
-	//LeftController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
-	//if (LeftController != nullptr)
-	//{
-	//	LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
-	//	LeftController->SetMotionSource(FName("Left"));
-	//	LeftController->SetOwner(this);
-	//}
-
-	//RightController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
-	//if (RightController != nullptr)
-	//{
-	//	RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
-	//	RightController->SetMotionSource(FName("Right"));
-	//	RightController->SetOwner(this);
-	//}
-
-	//LeftController->PairControllers(RightController);
 }
 
 // Called when the game starts or when spawned
@@ -63,21 +30,34 @@ void APlayerCharacter::BeginPlay()
 	NewCameraOffset.Y = 0;
 	NewCameraOffset.Z = -GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
 	VRRoot->AddWorldOffset(NewCameraOffset);
+
+	LeftController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
+	if (LeftController != nullptr)
+	{
+		LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
+		LeftController->SetMotionSource(FName("Left"));
+		LeftController->SetOwner(this);
+	}
+
+	RightController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
+	if (RightController != nullptr)
+	{
+		RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
+		RightController->SetMotionSource(FName("Right"));
+		RightController->SetOwner(this);
+	}
+	
+	LeftController->PairControllers(RightController);
 }
 
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//VRRoot->SetRelativeLocation(FVector(Camera->GetComponentLocation().X, Camera->GetComponentLocation().Y, Camera->GetComponentLocation().Z - GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 
 	FVector NewCameraOffset = Camera->GetComponentLocation() - GetActorLocation();
-	//VRRoot->SetRelativeLocation(FVector(Camera->GetComponentLocation().X, Camera->GetComponentLocation().Y, Camera->GetComponentLocation().Z - GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 	NewCameraOffset.Z = 0;
-
 	AddActorWorldOffset(NewCameraOffset);
-
-
 	VRRoot->AddWorldOffset(-NewCameraOffset);
 
 }
@@ -89,15 +69,25 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	PlayerInputComponent->BindAxis(TEXT("Forward"), this, &APlayerCharacter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("Right"), this, &APlayerCharacter::MoveRight);
+
+	PlayerInputComponent->BindAxis(TEXT("ThumbstickX"), this, &APlayerCharacter::MoveRight);
+	PlayerInputComponent->BindAxis(TEXT("ThumbstickY"), this, &APlayerCharacter::MoveForward);
+
 }
 
 void APlayerCharacter::MoveForward(float throttle)
 {
+	if (throttle > 0) {
+		UE_LOG(LogTemp, Warning, TEXT("MoveForward: %f"), throttle);
+	}
 	AddMovementInput(throttle * Camera->GetForwardVector());
 }
 
 void APlayerCharacter::MoveRight(float throttle)
 {
+	if (throttle > 0) {
+		UE_LOG(LogTemp, Warning, TEXT("MoveRight: %f"), throttle);
+	}
 	AddMovementInput(throttle * Camera->GetRightVector());
 }
 

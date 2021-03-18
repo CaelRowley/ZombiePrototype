@@ -10,5 +10,6 @@ AControllerBase::AControllerBase()
 	PrimaryActorTick.bCanEverTick = false;
 
 	MotionController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("MotionController"));
+	MotionController->SetShowDeviceModel(true);
 	SetRootComponent(MotionController);
 }
