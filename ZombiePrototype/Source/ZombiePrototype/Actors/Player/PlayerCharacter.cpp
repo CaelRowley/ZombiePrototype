@@ -67,27 +67,6 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis(TEXT("Forward"), this, &APlayerCharacter::MoveForward);
-	PlayerInputComponent->BindAxis(TEXT("Right"), this, &APlayerCharacter::MoveRight);
-
-	PlayerInputComponent->BindAxis(TEXT("ThumbstickX"), this, &APlayerCharacter::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("ThumbstickY"), this, &APlayerCharacter::MoveForward);
-
+	PlayerInputComponent->BindAxis(TEXT("LeftThumbstickX"), this, &APlayerCharacter::LeftThumbstickX);
+	PlayerInputComponent->BindAxis(TEXT("LeftThumbstickY"), this, &APlayerCharacter::LeftThumbstickY);
 }
-
-void APlayerCharacter::MoveForward(float throttle)
-{
-	if (throttle > 0) {
-		UE_LOG(LogTemp, Warning, TEXT("MoveForward: %f"), throttle);
-	}
-	AddMovementInput(throttle * Camera->GetForwardVector());
-}
-
-void APlayerCharacter::MoveRight(float throttle)
-{
-	if (throttle > 0) {
-		UE_LOG(LogTemp, Warning, TEXT("MoveRight: %f"), throttle);
-	}
-	AddMovementInput(throttle * Camera->GetRightVector());
-}
-

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "MotionControllerComponent.h"
+#include "Camera/CameraComponent.h"
 
 #include "ControllerBase.generated.h"
 
@@ -24,19 +25,9 @@ public:
 	inline void SetMotionSource(FName MotionSource) { MotionController->SetTrackingMotionSource(MotionSource); }
 	virtual void PairControllers(AControllerBase* ControllerBase) { }
 
-	virtual void LeftThumbstickX(float throttle) { }
-	virtual void LeftThumbstickY() { }
-	virtual void RightThumbstickX() { }
-	virtual void RightThumbstickY() { }
-
-	virtual void LeftGrip() { }
-	virtual void LeftRelease() { }
-	virtual void RightGrip() { }
-	virtual void RightRelease() { }
-
+	virtual void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	
 	virtual void LeftTriggerPressed() { }
-	virtual void LeftTriggerReleased() { }
 	virtual void RightTriggerPressed() { }
-	virtual void RightTriggerReleased() { }
-
 };

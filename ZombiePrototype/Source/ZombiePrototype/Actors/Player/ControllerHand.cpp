@@ -9,25 +9,28 @@ void AControllerHand::PairControllers(AControllerBase* Controller)
 	OtherController->OtherController = this;
 }
 
-void AControllerHand::LeftThumbstickX(float throttle)
+void AControllerHand::LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera)
 {
-	UE_LOG(LogTemp, Warning, TEXT("throttle: %f"), throttle);
+	if (throttle != 0) {
+		UE_LOG(LogTemp, Warning, TEXT("MoveRight: %f"), throttle);
+	}
+	pawn->AddMovementInput(throttle * Camera->GetRightVector());
 }
 
-void AControllerHand::LeftThumbstickY()
+void AControllerHand::LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera)
 {
-	UE_LOG(LogTemp, Warning, TEXT("LeftThumbstickX"));
-}
-
-void AControllerHand::RightThumbstickX()
-{
-}
-
-void AControllerHand::RightThumbstickY()
-{
+	if (throttle != 0) {
+		UE_LOG(LogTemp, Warning, TEXT("MoveForward: %f"), throttle);
+	}
+	pawn->AddMovementInput(throttle * Camera->GetForwardVector());
 }
 
 void AControllerHand::LeftTriggerPressed()
 {
-	UE_LOG(LogTemp, Warning, TEXT("LeftTriggerPressed"));
+	UE_LOG(LogTemp, Warning, TEXT("Left trigger Pressed"));
+}
+
+void AControllerHand::RightTriggerPressed()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Right trigger Pressed"));
 }

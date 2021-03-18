@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "ControllerBase.h"
+#include "Camera/CameraComponent.h"
+
 #include "ControllerHand.generated.h"
 
 /**
@@ -17,11 +19,11 @@ class ZOMBIEPROTOTYPE_API AControllerHand : public AControllerBase
 public:
 	void PairControllers(AControllerBase* Controller) override;
 
-	void LeftThumbstickX(float throttle) override;
-	void LeftThumbstickY() override;
-	void RightThumbstickX() override;
-	void RightThumbstickY() override;
+	void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) override;
+	void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) override;
+
 	void LeftTriggerPressed() override;
+	void RightTriggerPressed() override;
 
 	AControllerHand* OtherController;
 };

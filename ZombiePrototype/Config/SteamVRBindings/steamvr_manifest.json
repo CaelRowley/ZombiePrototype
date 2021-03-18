@@ -152,16 +152,16 @@
 			"type": "boolean"
 		},
 		{
-			"name": "/actions/main/in/Forward axis",
+			"name": "/actions/main/in/LeftThumbstickX axis",
 			"type": "vector1"
 		},
 		{
-			"name": "/actions/main/in/Right axis",
-			"type": "vector1"
-		},
-		{
-			"name": "/actions/main/in/ThumbstickX,ThumbstickY X Y_axis2d",
+			"name": "/actions/main/in/LeftThumbstickX,LeftThumbstickY X Y_axis2d",
 			"type": "vector2"
+		},
+		{
+			"name": "/actions/main/in/LeftThumbstickY axis",
+			"type": "vector1"
 		}
 	],
 	"action_sets": [
@@ -405,9 +405,9 @@
 			"/actions/main/out/vibrateright": "Haptic (Right)",
 			"/actions/main/in/open_console": "Open Console",
 			"/actions/main/in/LeftTriggerPressed": "LeftTriggerPressed",
-			"/actions/main/in/Forward axis": "Forward",
-			"/actions/main/in/Right axis": "Right",
-			"/actions/main/in/ThumbstickX,ThumbstickY X Y_axis2d": "Thumbstick",
+			"/actions/main/in/LeftThumbstickX axis": "LeftThumbstickX",
+			"/actions/main/in/LeftThumbstickX,LeftThumbstickY X Y_axis2d": "LeftThumbstick",
+			"/actions/main/in/LeftThumbstickY axis": "LeftThumbstickY",
 			"/actions/main": "Main Game Actions"
 		}
 	]

@@ -44,10 +44,9 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	AControllerBase* RightController;
 
-	void MoveForward(float throttle);
-	void MoveRight(float throttle);
-
 	inline void LeftTriggerPressed() { LeftController->LeftTriggerPressed(); }
-	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle); }
+	inline void RightTriggerPressed() { RightController->RightTriggerPressed(); }
+	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle, this, Camera); }
+	inline void LeftThumbstickY(float throttle) { LeftController->LeftThumbstickY(throttle, this, Camera); }
 
 };
