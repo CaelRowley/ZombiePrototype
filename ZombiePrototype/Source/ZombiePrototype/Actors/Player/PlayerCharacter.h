@@ -43,10 +43,23 @@ private:
 	AControllerBase* LeftController;
 	UPROPERTY(VisibleAnywhere)
 	AControllerBase* RightController;
+	
+	// Action mappings
+	inline void TriggerLeftPressed() { LeftController->TriggerLeftPressed(); }
+	inline void TriggerLeftReleased() { RightController->TriggerLeftReleased(); }
+	inline void TriggerRightPressed() { LeftController->TriggerRightPressed(); }
+	inline void TriggerRightReleased() { RightController->TriggerRightReleased(); }
+	inline void GrabLeftPressed() { LeftController->GrabLeftPressed(); }
+	inline void GrabLeftReleased() { RightController->GrabLeftReleased(); }
+	inline void GrabRightPressed() { LeftController->GrabRightPressed(); }
+	inline void GrabRightReleased() { RightController->GrabRightReleased(); }
 
-	inline void LeftTriggerPressed() { LeftController->LeftTriggerPressed(); }
-	inline void RightTriggerPressed() { RightController->RightTriggerPressed(); }
+	// Axis mappings
 	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle, this, Camera); }
 	inline void LeftThumbstickY(float throttle) { LeftController->LeftThumbstickY(throttle, this, Camera); }
+	inline void RightThumbstickX(float throttle) { LeftController->RightThumbstickX(throttle, this, Camera); }
+	inline void RightThumbstickY(float throttle) { LeftController->RightThumbstickY(throttle, this, Camera); }
+	inline void SqueezeLeft(float throttle) { LeftController->SqueezeLeft(throttle); }
+	inline void SqueezeRight(float throttle) { LeftController->SqueezeRight(throttle); }
 
 };

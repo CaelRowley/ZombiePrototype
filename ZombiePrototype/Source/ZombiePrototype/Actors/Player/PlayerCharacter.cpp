@@ -6,6 +6,8 @@
 #include "Components/SplineComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "HeadMountedDisplayTypes.h"
+#include "HeadMountedDisplayFunctionLibrary.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -25,11 +27,27 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FVector NewCameraOffset = Camera->GetComponentLocation();
-	NewCameraOffset.X = 0;
-	NewCameraOffset.Y = 0;
-	NewCameraOffset.Z = -GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
-	VRRoot->AddWorldOffset(NewCameraOffset);
+	// Offsets the players capsule collider
+	VRRoot->AddWorldOffset(FVector(0, 0, -GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+
+	UE_LOG(LogTemp, Warning, TEXT("GetHMDDeviceName String: %s"), *FString(UHeadMountedDisplayFunctionLibrary::GetHMDDeviceName().ToString()));
+	UE_LOG(LogTemp, Warning, TEXT("GetHMDDeviceName Number: %i"), UHeadMountedDisplayFunctionLibrary::GetHMDDeviceName().GetNumber());
+
+	switch (UHeadMountedDisplayFunctionLibrary::GetHMDDeviceName().GetNumber())
+	{
+		// SteamVR
+		case 0:
+			UE_LOG(LogTemp, Warning, TEXT("Selected SteamVR"));
+			UHeadMountedDisplayFunctionLibrary::SetTrackingOrigin(EHMDTrackingOrigin::Floor);
+			break;
+
+		default:
+			UE_LOG(LogTemp, Warning, TEXT("Selected Default"));
+			UHeadMountedDisplayFunctionLibrary::SetTrackingOrigin(EHMDTrackingOrigin::Floor);
+			break;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Device Setup Complete"));
 
 	LeftController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
 	if (LeftController != nullptr)
@@ -67,6 +85,21 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	// Action mappings
+	PlayerInputComponent->BindAction(TEXT("TriggerLeft"), IE_Pressed, this, &APlayerCharacter::TriggerLeftPressed);
+	PlayerInputComponent->BindAction(TEXT("TriggerLeft"), IE_Released, this, &APlayerCharacter::TriggerLeftReleased);
+	PlayerInputComponent->BindAction(TEXT("TriggerRight"), IE_Pressed, this, &APlayerCharacter::TriggerRightPressed);
+	PlayerInputComponent->BindAction(TEXT("TriggerRight"), IE_Released, this, &APlayerCharacter::TriggerRightReleased);
+	PlayerInputComponent->BindAction(TEXT("GrabLeft"), IE_Pressed, this, &APlayerCharacter::GrabLeftPressed);
+	PlayerInputComponent->BindAction(TEXT("GrabLeft"), IE_Released, this, &APlayerCharacter::GrabLeftReleased);
+	PlayerInputComponent->BindAction(TEXT("TrackpadLeft"), IE_Pressed, this, &APlayerCharacter::GrabRightPressed);
+	PlayerInputComponent->BindAction(TEXT("TrackpadRight"), IE_Released, this, &APlayerCharacter::GrabRightReleased);
+
+	// Axis mappings
 	PlayerInputComponent->BindAxis(TEXT("LeftThumbstickX"), this, &APlayerCharacter::LeftThumbstickX);
 	PlayerInputComponent->BindAxis(TEXT("LeftThumbstickY"), this, &APlayerCharacter::LeftThumbstickY);
+	PlayerInputComponent->BindAxis(TEXT("RightThumbstickX"), this, &APlayerCharacter::RightThumbstickX);
+	PlayerInputComponent->BindAxis(TEXT("RightThumbstickY"), this, &APlayerCharacter::RightThumbstickY);
+	PlayerInputComponent->BindAxis(TEXT("SqueezeLeft"), this, &APlayerCharacter::SqueezeLeft);
+	PlayerInputComponent->BindAxis(TEXT("SqueezeRight"), this, &APlayerCharacter::SqueezeRight);
 }

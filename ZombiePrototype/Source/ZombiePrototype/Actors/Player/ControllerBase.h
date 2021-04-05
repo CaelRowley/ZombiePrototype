@@ -25,9 +25,22 @@ public:
 	inline void SetMotionSource(FName MotionSource) { MotionController->SetTrackingMotionSource(MotionSource); }
 	virtual void PairControllers(AControllerBase* ControllerBase) { }
 
+
+	// Action mappings
+	virtual void TriggerLeftPressed() { }
+	virtual void TriggerLeftReleased() { }
+	virtual void TriggerRightPressed() { }
+	virtual void TriggerRightReleased() { }
+	virtual void GrabLeftPressed() { }
+	virtual void GrabLeftReleased() { }
+	virtual void GrabRightPressed() { }
+	virtual void GrabRightReleased() { }
+
+	// Axis mappings
 	virtual void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) { }
 	virtual void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) { }
-	
-	virtual void LeftTriggerPressed() { }
-	virtual void RightTriggerPressed() { }
+	virtual void RightThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void RightThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void SqueezeLeft(float throttle) { }
+	virtual void SqueezeRight(float throttle) { }
 };

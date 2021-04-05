@@ -16,12 +16,17 @@
 	],
 	"Plugins": [
 		{
-			"Name": "PythonScriptPlugin",
+			"Name": "EditorScriptingUtilities",
 			"Enabled": true
 		},
 		{
-			"Name": "EditorScriptingUtilities",
-			"Enabled": true
+			"Name": "OculusVR",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win32",
+				"Win64",
+				"Android"
+			]
 		}
 	]
 }

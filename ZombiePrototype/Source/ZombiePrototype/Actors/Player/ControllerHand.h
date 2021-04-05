@@ -17,13 +17,30 @@ class ZOMBIEPROTOTYPE_API AControllerHand : public AControllerBase
 	GENERATED_BODY()
 	
 public:
+	AControllerHand();
+
 	void PairControllers(AControllerBase* Controller) override;
 
+	// Action mappings
+	virtual void TriggerLeftPressed() override;
+	virtual void TriggerLeftReleased() override;
+	virtual void TriggerRightPressed() override;
+	virtual void TriggerRightReleased() override;
+	virtual void GrabLeftPressed() override;
+	virtual void GrabLeftReleased() override;
+	virtual void GrabRightPressed() override;
+	virtual void GrabRightReleased() override;
+
+	// Axis mappings
 	void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) override;
 	void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) override;
-
-	void LeftTriggerPressed() override;
-	void RightTriggerPressed() override;
+	void RightThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) override;
+	void RightThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) override;
+	void SqueezeLeft(float throttle) override;
+	void SqueezeRight(float throttle) override;
 
 	AControllerHand* OtherController;
+
+private:
+	bool bIsRightGripping = false;
 };
