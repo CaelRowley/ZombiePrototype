@@ -8,22 +8,22 @@
 		{
 			"sources": [
 				{
-					"mode": "grab",
-					"path": "/user/hand/left/input/pinch",
+					"mode": "trigger",
+					"path": "/user/hand/left/input/trigger",
 					"inputs":
 					{
-						"grab":
+						"click":
 						{
 							"output": "/actions/main/in/TriggerLeft"
 						}
 					}
 				},
 				{
-					"mode": "grab",
-					"path": "/user/hand/right/input/pinch",
+					"mode": "trigger",
+					"path": "/user/hand/right/input/trigger",
 					"inputs":
 					{
-						"grab":
+						"click":
 						{
 							"output": "/actions/main/in/TriggerRight"
 						}
@@ -52,11 +52,11 @@
 					}
 				},
 				{
-					"mode": "trackpad",
+					"mode": "button",
 					"path": "/user/hand/left/input/trackpad",
 					"inputs":
 					{
-						"touch":
+						"click":
 						{
 							"output": "/actions/main/in/TrackpadLeft"
 						}
@@ -114,6 +114,28 @@
 						"position":
 						{
 							"output": "/actions/main/in/RightThumbstickX,RightThumbstickY X Y_axis2d"
+						}
+					}
+				},
+				{
+					"mode": "trigger",
+					"path": "/user/hand/right/input/trigger",
+					"inputs":
+					{
+						"pull":
+						{
+							"output": "/actions/main/in/TriggerRightAxis axis"
+						}
+					}
+				},
+				{
+					"mode": "trigger",
+					"path": "/user/hand/left/input/trigger",
+					"inputs":
+					{
+						"pull":
+						{
+							"output": "/actions/main/in/TriggerLeftAxis axis"
 						}
 					}
 				}
