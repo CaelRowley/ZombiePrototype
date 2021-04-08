@@ -55,6 +55,7 @@ void APlayerCharacter::BeginPlay()
 		LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 		LeftController->SetMotionSource(FName("Left"));
 		LeftController->SetOwner(this);
+		LeftController->Initialize();
 	}
 
 	RightController = GetWorld()->SpawnActor<AControllerBase>(ControllerBase);
@@ -63,6 +64,7 @@ void APlayerCharacter::BeginPlay()
 		RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 		RightController->SetMotionSource(FName("Right"));
 		RightController->SetOwner(this);
+		RightController->Initialize();
 	}
 	
 	LeftController->PairControllers(RightController);

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "ControllerBase.h"
 #include "Camera/CameraComponent.h"
+//#include "Engine/SkeletalMesh.h"
 
 #include "ControllerHand.generated.h"
 
@@ -19,7 +20,10 @@ class ZOMBIEPROTOTYPE_API AControllerHand : public AControllerBase
 public:
 	AControllerHand();
 
+	//Class USkeletalMesh* SkeletalMesh;
+
 	void PairControllers(AControllerBase* Controller) override;
+	void Initialize() override;
 
 	// Axis mappings
 	void LeftThumbstickX(float axisValue, APawn* pawn, FVector direction) override;

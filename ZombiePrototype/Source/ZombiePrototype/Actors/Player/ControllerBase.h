@@ -24,7 +24,7 @@ public:
 
 	inline void SetMotionSource(FName MotionSource) { MotionController->SetTrackingMotionSource(MotionSource); }
 	virtual void PairControllers(AControllerBase* ControllerBase) { }
-
+	virtual void Initialize() { }
 
 	// Action mappings
 	virtual void TriggerLeftPressed();
