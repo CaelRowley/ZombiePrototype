@@ -194,14 +194,6 @@
 		{
 			"name": "/actions/main/in/RightThumbstickX,RightThumbstickY X Y_axis2d",
 			"type": "vector2"
-		},
-		{
-			"name": "/actions/main/in/TriggerRightAxis axis",
-			"type": "vector1"
-		},
-		{
-			"name": "/actions/main/in/TriggerLeftAxis axis",
-			"type": "vector1"
 		}
 	],
 	"action_sets": [
@@ -456,8 +448,6 @@
 			"/actions/main/in/SqueezeLeft axis": "SqueezeLeft",
 			"/actions/main/in/SqueezeRight axis": "SqueezeRight",
 			"/actions/main/in/RightThumbstickX,RightThumbstickY X Y_axis2d": "RightThumbstick",
-			"/actions/main/in/TriggerRightAxis axis": "TriggerRightAxis",
-			"/actions/main/in/TriggerLeftAxis axis": "TriggerLeftAxis",
 			"/actions/main": "Main Game Actions"
 		}
 	]

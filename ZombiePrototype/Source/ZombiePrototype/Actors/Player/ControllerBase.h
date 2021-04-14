@@ -27,26 +27,20 @@ public:
 	virtual void Initialize() { }
 
 	// Action mappings
-	virtual void TriggerLeftPressed();
-	virtual void TriggerLeftReleased();
-	virtual void TriggerRightPressed();
-	virtual void TriggerRightReleased();
-	virtual void GrabLeftPressed();
-	virtual void GrabLeftReleased();
-	virtual void GrabRightPressed();
-	virtual void GrabRightReleased();
-	virtual void TrackpadLeftPressed();
-	virtual void TrackpadLeftReleased();
-	virtual void TrackpadRightPressed();
-	virtual void TrackpadRightReleased();
+	virtual void TriggerLeftPressed() { }
+	virtual void TriggerLeftReleased() { }
+	virtual void TriggerRightPressed() { }
+	virtual void TriggerRightReleased() { }
+	virtual void GrabLeftPressed() { }
+	virtual void GrabLeftReleased() { }
+	virtual void GrabRightPressed() { }
+	virtual void GrabRightReleased() { }
 
 	// Axis mappings
-	virtual void LeftThumbstickX(float axisValue, APawn* pawn, FVector direction);
-	virtual void LeftThumbstickY(float axisValue, APawn* pawn, FVector direction);
-	virtual void RightThumbstickX(float axisValue, APawn* pawn, FVector direction);
-	virtual void RightThumbstickY(float axisValue, APawn* pawn, FVector direction);
-	virtual void SqueezeLeft(float axisValue);
-	virtual void SqueezeRight(float axisValue);
-	virtual void TriggerLeftAxis(float axisValue);
-	virtual void TriggerRightAxis(float axisValue);
+	virtual void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void RightThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void RightThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) { }
+	virtual void SqueezeLeft(float throttle) { }
+	virtual void SqueezeRight(float throttle) { }
 };

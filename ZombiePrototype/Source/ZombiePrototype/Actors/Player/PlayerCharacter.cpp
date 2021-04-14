@@ -94,12 +94,8 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction(TEXT("TriggerRight"), IE_Released, this, &APlayerCharacter::TriggerRightReleased);
 	PlayerInputComponent->BindAction(TEXT("GrabLeft"), IE_Pressed, this, &APlayerCharacter::GrabLeftPressed);
 	PlayerInputComponent->BindAction(TEXT("GrabLeft"), IE_Released, this, &APlayerCharacter::GrabLeftReleased);
-	PlayerInputComponent->BindAction(TEXT("GrabRight"), IE_Pressed, this, &APlayerCharacter::GrabRightPressed);
-	PlayerInputComponent->BindAction(TEXT("GrabRight"), IE_Released, this, &APlayerCharacter::GrabRightReleased);
-	PlayerInputComponent->BindAction(TEXT("TrackpadLeft"), IE_Pressed, this, &APlayerCharacter::TrackpadLeftPressed);
-	PlayerInputComponent->BindAction(TEXT("TrackpadLeft"), IE_Released, this, &APlayerCharacter::TrackpadLeftReleased);
-	PlayerInputComponent->BindAction(TEXT("TrackpadRight"), IE_Pressed, this, &APlayerCharacter::TrackpadRightPressed);
-	PlayerInputComponent->BindAction(TEXT("TrackpadRight"), IE_Released, this, &APlayerCharacter::TrackpadRightReleased);
+	PlayerInputComponent->BindAction(TEXT("TrackpadLeft"), IE_Pressed, this, &APlayerCharacter::GrabRightPressed);
+	PlayerInputComponent->BindAction(TEXT("TrackpadRight"), IE_Released, this, &APlayerCharacter::GrabRightReleased);
 
 	// Axis mappings
 	PlayerInputComponent->BindAxis(TEXT("LeftThumbstickX"), this, &APlayerCharacter::LeftThumbstickX);
@@ -108,6 +104,4 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis(TEXT("RightThumbstickY"), this, &APlayerCharacter::RightThumbstickY);
 	PlayerInputComponent->BindAxis(TEXT("SqueezeLeft"), this, &APlayerCharacter::SqueezeLeft);
 	PlayerInputComponent->BindAxis(TEXT("SqueezeRight"), this, &APlayerCharacter::SqueezeRight);
-	PlayerInputComponent->BindAxis(TEXT("TriggerLeftAxis"), this, &APlayerCharacter::TriggerLeftAxis);
-	PlayerInputComponent->BindAxis(TEXT("TriggerRightAxis"), this, &APlayerCharacter::TriggerRightAxis);
 }

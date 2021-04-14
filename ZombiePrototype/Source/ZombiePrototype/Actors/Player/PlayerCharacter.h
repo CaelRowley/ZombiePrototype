@@ -46,33 +46,20 @@ private:
 	
 	// Action mappings
 	inline void TriggerLeftPressed() { LeftController->TriggerLeftPressed(); }
-	inline void TriggerLeftReleased() { LeftController->TriggerLeftReleased(); }
-
-	inline void TriggerRightPressed() { RightController->TriggerRightPressed(); }
+	inline void TriggerLeftReleased() { RightController->TriggerLeftReleased(); }
+	inline void TriggerRightPressed() { LeftController->TriggerRightPressed(); }
 	inline void TriggerRightReleased() { RightController->TriggerRightReleased(); }
-
 	inline void GrabLeftPressed() { LeftController->GrabLeftPressed(); }
-	inline void GrabLeftReleased() { LeftController->GrabLeftReleased(); }
-
-	inline void GrabRightPressed() { RightController->GrabRightPressed(); }
+	inline void GrabLeftReleased() { RightController->GrabLeftReleased(); }
+	inline void GrabRightPressed() { LeftController->GrabRightPressed(); }
 	inline void GrabRightReleased() { RightController->GrabRightReleased(); }
 
-	inline void TrackpadLeftPressed() { LeftController->TrackpadLeftPressed(); }
-	inline void TrackpadLeftReleased() { LeftController->TrackpadLeftReleased(); }
-
-	inline void TrackpadRightPressed() { RightController->TrackpadRightPressed(); }
-	inline void TrackpadRightReleased() { RightController->TrackpadRightReleased(); }
-
 	// Axis mappings
-	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle, this, Camera->GetRightVector()); }
-	inline void LeftThumbstickY(float throttle) { LeftController->LeftThumbstickY(throttle, this, Camera->GetForwardVector()); }
-
-	inline void RightThumbstickX(float throttle) { RightController->RightThumbstickX(throttle, this, Camera->GetRightVector()); }
-	inline void RightThumbstickY(float throttle) { RightController->RightThumbstickY(throttle, this, Camera->GetForwardVector()); }
-
+	inline void LeftThumbstickX(float throttle) { LeftController->LeftThumbstickX(throttle, this, Camera); }
+	inline void LeftThumbstickY(float throttle) { LeftController->LeftThumbstickY(throttle, this, Camera); }
+	inline void RightThumbstickX(float throttle) { LeftController->RightThumbstickX(throttle, this, Camera); }
+	inline void RightThumbstickY(float throttle) { LeftController->RightThumbstickY(throttle, this, Camera); }
 	inline void SqueezeLeft(float throttle) { LeftController->SqueezeLeft(throttle); }
-	inline void SqueezeRight(float throttle) { RightController->SqueezeRight(throttle); }
+	inline void SqueezeRight(float throttle) { LeftController->SqueezeRight(throttle); }
 
-	inline void TriggerLeftAxis(float throttle) { RightController->TriggerLeftAxis(throttle); }
-	inline void TriggerRightAxis(float throttle) { RightController->TriggerRightAxis(throttle); }
 };
