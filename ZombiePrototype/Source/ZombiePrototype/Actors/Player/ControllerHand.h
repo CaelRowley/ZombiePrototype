@@ -25,23 +25,9 @@ public:
 	void PairControllers(AControllerBase* Controller) override;
 	void Initialize() override;
 
-	// Action mappings
-	virtual void TriggerLeftPressed() override;
-	virtual void TriggerLeftReleased() override;
-	virtual void TriggerRightPressed() override;
-	virtual void TriggerRightReleased() override;
-	virtual void GrabLeftPressed() override;
-	virtual void GrabLeftReleased() override;
-	virtual void GrabRightPressed() override;
-	virtual void GrabRightReleased() override;
-
 	// Axis mappings
-	void LeftThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) override;
-	void LeftThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) override;
-	void RightThumbstickX(float throttle, APawn* pawn, UCameraComponent* Camera) override;
-	void RightThumbstickY(float throttle, APawn* pawn, UCameraComponent* Camera) override;
-	void SqueezeLeft(float throttle) override;
-	void SqueezeRight(float throttle) override;
+	void LeftThumbstickX(float axisValue, APawn* pawn, FVector direction) override;
+	void LeftThumbstickY(float axisValue, APawn* pawn, FVector direction) override;
 
 	AControllerHand* OtherController;
 
