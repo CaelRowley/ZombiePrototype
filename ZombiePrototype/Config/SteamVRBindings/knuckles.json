@@ -52,11 +52,11 @@
 					}
 				},
 				{
-					"mode": "trackpad",
+					"mode": "button",
 					"path": "/user/hand/left/input/trackpad",
 					"inputs":
 					{
-						"touch":
+						"click":
 						{
 							"output": "/actions/main/in/TrackpadLeft"
 						}

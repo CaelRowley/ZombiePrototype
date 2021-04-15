@@ -27,8 +27,7 @@ void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	// Offsets the players capsule collider
-	VRRoot->AddWorldOffset(FVector(0, 0, -GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
+
 
 	UE_LOG(LogTemp, Warning, TEXT("GetHMDDeviceName String: %s"), *FString(UHeadMountedDisplayFunctionLibrary::GetHMDDeviceName().ToString()));
 	UE_LOG(LogTemp, Warning, TEXT("GetHMDDeviceName Number: %i"), UHeadMountedDisplayFunctionLibrary::GetHMDDeviceName().GetNumber());
@@ -46,6 +45,9 @@ void APlayerCharacter::BeginPlay()
 			UHeadMountedDisplayFunctionLibrary::SetTrackingOrigin(EHMDTrackingOrigin::Floor);
 			break;
 	}
+
+	// Offsets the players capsule collider
+	VRRoot->AddWorldOffset(FVector(0, 0, -GetCapsuleComponent()->GetScaledCapsuleHalfHeight()));
 
 	UE_LOG(LogTemp, Warning, TEXT("Device Setup Complete"));
 
