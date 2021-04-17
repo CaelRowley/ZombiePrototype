@@ -25,7 +25,7 @@ void AControllerHand::Initialize()
 	}
 
 	if (MotionSource == FName("Right")) {
-		MotionController->SetRelativeScale3D(FVector(1.0, 1.0, 1.0));
+		// MotionController->SetRelativeScale3D(FVector(1.0, 1.0, 1.0));
 		UE_LOG(LogTemp, Warning, TEXT("SetRelativeScale3D: RIGHT"));
 	}
 
